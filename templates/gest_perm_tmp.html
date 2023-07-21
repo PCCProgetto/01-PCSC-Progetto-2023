@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestione_Permessi</title>
+    <link rel="stylesheet" type="text/css" href="../static/src/css/gest_perm_tmp.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align: left;">
+            <a href="/dashboard/gest_perm/add_perm" class="button">Aggiungi permessi</a>
+            <a href="/logout" class="button">Logout</a>
+        </div>
+        <br>
+
+        <div class="name">
+            {% for p in perm.keys() %}
+                {{ perm[p].replace("_", " ") }}
+                <br>
+                <button class="delete_button" type="button" data-p="{{ p }}" data-n="{{ perm[p] }}">Cancella</button>
+                <button class="edit_button" type="button" onclick="location.href='/dashboard/gest_perm/change/{{ p }}'">Modifica</button>
+                <br><br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+
+  <link rel="stylesheet" href="../static/src/css/main.css" />
+</head>
+
+<body>
+  <a href="/dashboard/gest_perm"><button>Gestione Permessi</button></a>
+
+  <input type="text" id="accessInput" onkeyup="lookNames()" placeholder="Search for names.." title="Type in a name">
+  {{ listaFoto |safe}}
+
+  <a href="/logout">logout</a>
+
+  <script>
+    function lookNames() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("accessInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("accessTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

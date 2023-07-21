@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestione_Permessi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/src/css/add_perm_tmp.css') }}">
+</head>
+<body>
+
+
+<form id="add_perm_form" action='/dashboard/gest_perm/add_perm' method="post" enctype="multipart/form-data">
+    <label for="name">Nome:</label>
+    <input type="text" id="nome" name="nome" value="{{ nome |safe }}">
+    <br>
+    <br>
+    <label for="surname">Cognome:</label>
+    <input type="text" id="cognome" name="cognome" value="{{ cognome |safe }}">
+    <br>
+    <br>
+    <div id="image-box">
+        <img id="preview" src="#" alt="Immagine selezionata">
+        <video id="videoElement" autoplay muted></video>
+        <div id="image-buttons">
+            <button type="button" onclick="choseImage()">Carica immagine</button>
+            <span>o</span>
+            <button type="button" id="startcamera" onclick="startCamera()">Usa Camera</button>
+            <button type="button" id="scatta" onclick="capture()">Scatta</button>
+        </div>
+    </div>
+    <br>
+    <div>
+        <input type="file" id="image-input" name="image" accept="image/*" onchange="previewImage(event);">
+        <input type="submit" value="Invia" class="submit-button">
+    </div>
+</form>
+
+<div id="overlay">
+    <div id="modal">
+        <div id="loader"></div>
+        <p>Attendere prego...</p>
+    </div>
+</div>
+<script>
+    let fromCamera = true;
+    const form = $("#add_perm_form")
+    const p = {{p|safe}};
+    if (p === "") {
+        form.attr('action', '/dashboard/gest_perm/add_perm');
+    } else {
+        form.attr('action', '/dashboard/gest_perm/change/' + p);
+        fetch('/image/' + p).then(response => response.json()).then(data => {
+            const img = document.getElementById('preview');
+
+            img.src = `data:image/jpeg;base64,${data.image}`;
+            //carica immagine nel input type file "image-input"
+            document.getElementById('image-input').files[0] = img;
+        });
+        previewImage();
+    }
+
+    function previewImage(event) {
+        const imageBox = document.getElementById('image-box');
+        const imageButtons = document.getElementById('image-buttons');
+        const preview = document.getElementById('preview');
+        imageBox.style.background = 'none';
+        preview.style.display = 'block';
+        if (!fromCamera) {
+            preview.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        imageButtons.style.display = 'flex';
+    }
+
+</script>
+<script src="{{ url_for('static', filename='/src/js/add_perm.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const nextPage = urlParams.get('next');
+        document.getElementById("next-page").value = nextPage;
+    </script>
+    <head>
+        <title>DoorBell Login Page</title>
+        <link rel="stylesheet" type="text/css" href="src\css\login_page.css">
+    </head>
+        <body>
+            <div class="login-box">
+                <img src="src\img\avatar.svg" class="avatar">
+                    <h1>Login Here</h1>
+                        <form action="/login" method="post">
+                            <p>Username</p>
+                            <input type="text" name="u" placeholder="Enter Username">
+                            <p>Password</p>
+                            <input type="password" name="p" placeholder="Enter Password">
+                            <input type="hidden" id="next-page" name="next" value="">
+                            <input type="submit" name="submit" value="Login">
+                        </form>
+            </div>
+        </body>
+
+</html>

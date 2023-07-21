@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>DoorBell</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/src/js/OpenCamera.js"></script>
+    <link rel="stylesheet" href="../static/src/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+    <!-- Header -->
+    <img id="logo" src="../static/src/img/logo.png">
+
+    <!-- Nav
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#intro" class="active">Introduction</a></li>
+                        <li><a href="#first">First Section</a></li>
+                        <li><a href="#second">Second Section</a></li>
+                        <li><a href="#cta">Get Started</a></li>
+                    </ul>
+                </nav> -->
+
+    <!-- Main -->
+    <!--
+    <div id="image-box">
+        <img id="preview" src="#" alt="Immagine selezionata">
+        <video id="videoElement" autoplay muted></video>
+        <div id="image-buttons">
+            <button type="button" onclick="choseImage()">Carica immagine</button>
+            <span>o</span>
+            <button type="button" id="startcamera" onclick="startCamera()">Usa Camera</button>
+            <button type="button" id="scatta" onclick="capture()">Scatta</button>
+        </div>
+    </div>
+    -->
+    <div class="content-img">
+        <img id="camera" class="video-content">
+        <video id="videoElement" class="video-content" autoplay muted></video>
+
+        <img id="cornice" src="../static/src/img/cornice.jpg">
+         <button type="button" id="startcamera" onclick="startCamera()">Usa Camera</button>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: center;">
+            <span onclick="capture()"><img src="../static/src/img/doorbellButton.png"
+                                           style="width: 25%;height: auto; background: none;" alt=""></span>
+    </div>
+
+    <a href="/dashboard">
+        <button type="button">admin dashboard</button>
+    </a>
+    <div id="result" style="display: none">
+        <p>Result</p>
+    </div>
+</div>
+
+</body>
+<!-- Scripts -->
+<!--
+		<script src="static/src/js/jquery.min.js"></script>
+		<script src="static/src/js/jquery.scrollex.min.js"></script>
+		<script src="static/src/js/jquery.scrolly.min.js"></script>
+		<script src="static/src/js/browser.min.js"></script>
+		<script src="static/src/js/breakpoints.min.js"></script>
+		<script src="static/src/js/util.js"></script>
+		<script src="static/src/js/main.js"></script>
+-->
+</html>
