@@ -19,7 +19,7 @@ class FaceRecognition():
         """
 
         # super variabiles
-        self.DEFAULT_ENCODINGS_PATH = Path("face-recognizer\output")
+        self.DEFAULT_ENCODINGS_PATH = Path("face-recognizer/output")
         self.BOUNDING_BOX_COLOR = (0, 0, 255)  # blue
         self.TEXT_COLOR = (255, 255, 255)  # white
 
