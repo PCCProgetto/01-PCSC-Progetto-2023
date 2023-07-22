@@ -97,6 +97,9 @@ def load_dashboard():
     files, links = list_bucket_files()
     filesProcessed = list()
     for i in range(len(files)):
+        # se files[i] contiene '<->' allora è una foto
+        if '<->' not in files[i]:
+            continue
         # each foto has a name with '<->' as separator
         # the first part is the access time, the second is the name of the person
         foto_split = files[i].split('<->')
